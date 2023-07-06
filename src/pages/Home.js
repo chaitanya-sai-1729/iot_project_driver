@@ -128,35 +128,50 @@ const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Code to get the current position
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude, accuracy } = position.coords;
-        
-        // Update the state variables
-        setLatitude(latitude);
-        setLongitude(longitude);
-        setAccuracy(accuracy);
+    // Function to request location access
+    const requestLocationAccess = () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude, accuracy } = position.coords;
   
-        console.log(latitude, longitude, accuracy);
+          // Update the state variables
+          setLatitude(latitude);
+          setLongitude(longitude);
+          setAccuracy(accuracy);
   
-        // Make a POST request using Axios
-        Axios.post("https://iot-project-red.vercel.app/", {
-          _id: username,
-          latitude,
-          longitude,
-          accuracy
-        }).then(function (response) {
-          console.log(response);
-        });
-      });
-    }, 60000); // Interval in milliseconds (1 minute)
+          console.log(latitude, longitude, accuracy);
+  
+          // Make a POST request using Axios
+          Axios.post("https://iot-project-red.vercel.app/", {
+            _id: username,
+            latitude,
+            longitude,
+            accuracy
+          }).then(function (response) {
+            console.log(response);
+          });
+        },
+        (error) => {
+          console.error(error);
+          // Handle error accessing location here
+        }
+      );
+    };
+  
+    // Call the location access function immediately
+    requestLocationAccess();
+  
+    // Interval to fetch location every 20 seconds
+    const interval = setInterval(requestLocationAccess, 20000);
   
     // Clear the interval when the component unmounts
     return () => {
       clearInterval(interval);
     };
   }, []); // Empty dependency array to run the effect only once on component mount
+  
+  
+  
   
 
 
