@@ -128,8 +128,8 @@ const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    // Function to request location access
-    const requestLocationAccess = () => {
+    // Function to request location access and fetch location
+    const fetchLocation = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude, accuracy } = position.coords;
@@ -158,17 +158,18 @@ const Home = () => {
       );
     };
   
-    // Call the location access function immediately
-    requestLocationAccess();
+    // Fetch location immediately after component mounts
+    fetchLocation();
   
     // Interval to fetch location every 20 seconds
-    const interval = setInterval(requestLocationAccess, 20000);
+    const interval = setInterval(fetchLocation, 20000);
   
     // Clear the interval when the component unmounts
     return () => {
       clearInterval(interval);
     };
   }, []); // Empty dependency array to run the effect only once on component mount
+  
   
   
   
