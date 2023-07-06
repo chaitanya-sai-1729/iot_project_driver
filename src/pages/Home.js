@@ -128,21 +128,36 @@ const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
-    setInterval(function () {
+    const interval = setInterval(() => {
+      // Code to get the current position
       navigator.geolocation.getCurrentPosition((position) => {
-        setLatitude(position.coords.latitude);
-        setLongitude(position.coords.longitude);
-        setAccuracy(position.coords.accuracy);
+        const { latitude, longitude, accuracy } = position.coords;
         
+        // Update the state variables
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setAccuracy(accuracy);
+  
         console.log(latitude, longitude, accuracy);
-        Axios.post("https://iot-project-red.vercel.app/", { _id: username, latitude: latitude, longitude: longitude, accuracy: accuracy }).then(function (response) {
+  
+        // Make a POST request using Axios
+        Axios.post("https://iot-project-red.vercel.app/", {
+          _id: username,
+          latitude,
+          longitude,
+          accuracy
+        }).then(function (response) {
           console.log(response);
-        })
+        });
       });
-    }, 1 * 60000);
-
-
-  }, [latitude, longitude])
+    }, 60000); // Interval in milliseconds (1 minute)
+  
+    // Clear the interval when the component unmounts
+    return () => {
+      clearInterval(interval);
+    };
+  }, []); // Empty dependency array to run the effect only once on component mount
+  
 
 
   return (
@@ -221,9 +236,9 @@ const Home = () => {
                                 color="#DCE2FF"
                                 _hover={{ border: '2px solid #1C6FEB' }}
                                 leftIcon={<MdPhone color="#1970F1" size="20px" />}
-                                onClick = {()=>window.open('tel:+91-8106095150')}
+                                onClick = {()=>window.open('tel:+91-9110859752')}
                                 >
-                                +91-8106095150
+                                +91-9110859752
                               </Button>
                               <Button
                                 size="md"
@@ -233,9 +248,9 @@ const Home = () => {
                                 color="#DCE2FF"
                                 _hover={{ border: '2px solid #1C6FEB' }}
                                 leftIcon={<MdEmail color="#1970F1" size="20px" />}
-                                onClick={()=>window.open('mailto:chaitanyasai.m.5@gmail.com')}
+                                onClick={()=>window.open('mailto:swetha.p2021@vitstudent.ac.in')}
                                 >
-                                  chaitanyasai.m.5@gmail.com
+                                  swetha.p2021@vitstudent.ac.in
                               </Button>
                               <Button
                                 size="md"
@@ -245,9 +260,9 @@ const Home = () => {
                                 color="#DCE2FF"
                                 _hover={{ border: '2px solid #1C6FEB' }}
                                 leftIcon={<MdLocationOn color="#1970F1" size="20px" />}
-                                onClick={() => window.open('https://www.google.com/maps/dir/12.8452076,77.6421572/TVS+Motor+Company+Limited,+Haritha,+Post+Box+no+4,+Hosur,+Tamil+Nadu+635109/@12.7435062,77.767848,15z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bae705053ab91b1:0xf7f1a4c480311058!2m2!1d77.7866977!2d12.7394042?entry=ttu', '_blank')}
+                                onClick={() => window.open('https://www.google.com/maps/place/VIT+MAIN+GATE/@12.9682351,79.1532929,17z/data=!3m1!4b1!4m6!3m5!1s0x3bad47e799e239f3:0x5c50fad394e65181!8m2!3d12.9682299!4d79.1558678!16s%2Fg%2F11h_bpvnpn?entry=ttu', '_blank')}
                                 >
-                                Banglore, India
+                                VIT Vellore, India
                               </Button>
                             </VStack>
                           </Box>
@@ -263,7 +278,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<FaInstagram size="28px" />}
-                              onClick={()=>window.open('https://www.instagram.com/chaitanyasai.m.3/','_blank')}
+                              onClick={()=>window.open('','_blank')}
                             />
                             <IconButton
                               aria-label="github"
@@ -272,7 +287,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<BsGithub size="28px" />}
-                              onClick={()=>window.open('https://github.com/chaitanya-sai-1729?tab=repositories','_blank')}
+                              onClick={()=>window.open('','_blank')}
                             />
                             <IconButton
                               aria-label="Portfolio"
@@ -281,7 +296,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<FaGlobe size="28px" />}
-                              onClick={()=>window.open('https://portfolio1-7qmm8mr1e-chaitanya-sai-1729.vercel.app/','_blank')}
+                              onClick={()=>window.open('','_blank')}
                             />
                           </HStack>
                         </Box>
