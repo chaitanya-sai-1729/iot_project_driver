@@ -252,9 +252,9 @@ const Home = () => {
                                 color="#DCE2FF"
                                 _hover={{ border: '2px solid #1C6FEB' }}
                                 leftIcon={<MdPhone color="#1970F1" size="20px" />}
-                                onClick = {()=>window.open('tel:+91-9110859752')}
+                                onClick = {()=>window.open('tel:+91-8106095150')}
                                 >
-                                +91-9110859752
+                                +91-8106095150
                               </Button>
                               <Button
                                 size="md"
@@ -264,9 +264,9 @@ const Home = () => {
                                 color="#DCE2FF"
                                 _hover={{ border: '2px solid #1C6FEB' }}
                                 leftIcon={<MdEmail color="#1970F1" size="20px" />}
-                                onClick={()=>window.open('mailto:swetha.p2021@vitstudent.ac.in')}
+                                onClick={()=>window.open('mailto:chaitanyasai.m.5@gmail.com')}
                                 >
-                                  swetha.p2021@vitstudent.ac.in
+                                  chaitanyasai.m.5@gmail.com
                               </Button>
                               <Button
                                 size="md"
@@ -294,7 +294,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<FaInstagram size="28px" />}
-                              onClick={()=>window.open('','_blank')}
+                              onClick={()=>window.open('https://www.instagram.com/chaitanyasai.m.3/','_blank')}
                             />
                             <IconButton
                               aria-label="github"
@@ -303,7 +303,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<BsGithub size="28px" />}
-                              onClick={()=>window.open('','_blank')}
+                              onClick={()=>window.open('https://github.com/chaitanya-sai-1729','_blank')}
                             />
                             <IconButton
                               aria-label="Portfolio"
@@ -312,7 +312,7 @@ const Home = () => {
                               isRound={true}
                               _hover={{ bg: '#0D74FF' }}
                               icon={<FaGlobe size="28px" />}
-                              onClick={()=>window.open('','_blank')}
+                              onClick={()=>window.open('https://portfolio1-alpha-inky.vercel.app/','_blank')}
                             />
                           </HStack>
                         </Box>
