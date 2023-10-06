@@ -181,7 +181,7 @@ const Home = () => {
       <ChakraProvider>
         
         <Flex direction="column"  h="100%">
-          <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+          <Box bg={useColorModeValue('gray.200', 'gray.900')} px={4}>
             <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
               <HStack spacing={8} alignItems={'center'}>
                 <Box
@@ -222,8 +222,17 @@ const Home = () => {
             </Flex>
 
           </Box>
+
           
-          <Flex flex='1' justifyContent="center" >
+            <Box  width={'100%'} justifyContent={'center'}  alignItems={'center'} textAlign={'center'} height='80vh' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              latitude : {latitude} 
+              <br/>
+              <br/>
+              longitude: {longitude}
+            </Box>
+          
+          
+          {/* <Flex flex='1' justifyContent="center" >
             <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
               <Flex>
                 <Box
@@ -369,7 +378,8 @@ const Home = () => {
                 </Box>
               </Flex>
             </Container>
-          </Flex>
+          </Flex> */}
+
 
           <Flex bg="white" alignItems={"center"} justifyContent={"space-between"}>
             <Box
